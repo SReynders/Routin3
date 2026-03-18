@@ -24,6 +24,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AI")
 	UBlackboardData* BlackboardAsset;
 
+	UBlackboardComponent* NPC_BB;
+
+	APawn* PlayerPawn;
+
 protected:
 	virtual void BeginPlay() override;
 

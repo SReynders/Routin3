@@ -14,9 +14,9 @@ void ANPC_controls::BeginPlay() {
 	UBlackboardComponent* Temp_BB = nullptr;
 	UseBlackboard(NPC_Behave->BlackboardAsset, Temp_BB);
 
-	UBlackboardComponent* NPC_BB = GetBlackboardComponent();
+	NPC_BB = GetBlackboardComponent();
 
-	APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+	PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 
 	NPC_BB->SetValueAsVector(TEXT("PlayerLocation"), PlayerPawn->GetActorLocation());
 
@@ -26,6 +26,6 @@ void ANPC_controls::BeginPlay() {
 void ANPC_controls::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
-
+	PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+	NPC_BB->SetValueAsVector(TEXT("PlayerLocation"), PlayerPawn->GetActorLocation());
 }
